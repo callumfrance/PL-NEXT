@@ -10,4 +10,37 @@
 
 <compound_statement> := 'START', (<statement>, ';')*, <statement>, 'STOP'
 
--- <for_statement> := 'FOR', <ident>, ':=', <expression>, 'DO', (<statement>, ';')*, <statement>, 'ROF'
+<for_statement> := 'FOR', <ident>, ':=', <expression>, 'DO', (<statement>, ';')*, <statement>, 'ROF'
+
+<do_statement> := 'DO', (<statement, ';')*, <statement>, 'WHILE', <expression>, 'OD'
+
+<while_statement> := 'WHILE', <expression>, 'DO', (<statement, ';')*, <statement>, 'ELIHW' 
+
+<if_statement> := 'IF', <expression>, 'THEN', <statement>, 'FI'
+
+<procedure_call> := 'EXECUTE', <ident>
+
+<assignment> := <ident>, 'SET', <expression>
+
+<statement> := <assignment>
+				| <procedure_call>
+				| <if_statement>
+				| <while_statement>
+				| <do_statement>
+				| <for_statement>
+				| <compound_statement>
+
+<implementation_part> := <statement>
+
+<function_declaration> := 'FUNC', <ident>, ';', <block>, ';'
+
+<procedure_declaration> := 'PROC', <ident>, ';', <block>, ';'
+
+<specification_part> :=
+				|
+				|
+				|
+				|
+				|
+
+<block> := 
