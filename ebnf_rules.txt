@@ -4,12 +4,10 @@
 
 <id_num> := <ident> | <number>
 
-<term> := <id_num> (('*' | '/') <id_num>)*
+<term> := <id_num>, (('*' | '/'), <id_num>)*
 
-<expression> := <term> (('+' | '-') <term>)*
+<expression> := <term>, (('+' | '-'), <term>)*
 
--- <compound_statement> := 'START' (<statement> ';')+ 'STOP'    // problem - always includes the ';'
+<compound_statement> := 'START', (<statement>, ';')*, <statement>, 'STOP'
 
--- <compound_statement> := 'START' (<statement> | (<statement> ';')+ ) 'STOP'  // problem - possible to have ';' for one statement
-
-<for_statement> := 'FOR' <ident> ':=' <expression> 'DO' (<statement>
+-- <for_statement> := 'FOR', <ident>, ':=', <expression>, 'DO', (<statement>, ';')*, <statement>, 'ROF'
