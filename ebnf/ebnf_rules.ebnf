@@ -8,17 +8,17 @@
 
 <id_num> := <ident> | <number>
 
-<term> := <id_num>, (('*' | '/'), <id_num>)*
+<term> := <id_num>, {('*' | '/'), <id_num>}
 
-<expression> := <term>, (('+' | '-'), <term>)*
+<expression> := <term>, {('+' | '-'), <term>}
 
-<compound_statement> := 'START', (<statement>, ';')*, <statement>, 'STOP'
+<compound_statement> := 'START', {<statement>, ';'}, <statement>, 'STOP'
 
-<for_statement> := 'FOR', <ident>, ':=', <expression>, 'DO', (<statement>, ';')*, <statement>, 'ROF'
+<for_statement> := 'FOR', <ident>, ':=', <expression>, 'DO', {<statement>, ';'}, <statement>, 'ROF'
 
-<do_statement> := 'DO', (<statement, ';')*, <statement>, 'WHILE', <expression>, 'OD'
+<do_statement> := 'DO', {<statement, ';'}, <statement>, 'WHILE', <expression>, 'OD'
 
-<while_statement> := 'WHILE', <expression>, 'DO', (<statement, ';')*, <statement>, 'ELIHW' 
+<while_statement> := 'WHILE', <expression>, 'DO', {<statement, ';'}, <statement>, 'ELIHW' 
 
 <if_statement> := 'IF', <expression>, 'THEN', <statement>, 'FI'
 
@@ -57,7 +57,7 @@
 
 <range_type> := '[', <range>, ']'
 
-<enumerated_type> := '{', (<ident>, ',')*, <ident>, '}'
+<enumerated_type> := '{', {<ident>, ','}, <ident>, '}'
 
 <basic_type> :=   <ident>
                 | <enumerated_type>
@@ -66,11 +66,11 @@
 <type> :=   <basic_type>
           | <array_type>
 
-<variable_declaration> := (<ident>, ':', <ident>, ',')*, <ident>, ':', <ident>, ';'
+<variable_declaration> := {<ident>, ':', <ident>, ','}, <ident>, ':', <ident>, ';'
 
-<constant_declaration> := (<ident>, 'IS', <number>, ',')*, <ident>, 'IS', <number>, ';'
+<constant_declaration> := {<ident>, 'IS', <number>, ','}, <ident>, 'IS', <number>, ';'
 
-<formal_parameters> := '(', (<ident>, ';')*, <ident>, ')'
+<formal_parameters> := '(', {<ident>, ';'}, <ident>, ')'
 
 <type_declaration> := 'TYPE', <ident>, '=>', <type>, ';'
 
