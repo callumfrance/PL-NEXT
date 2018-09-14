@@ -1,3 +1,14 @@
+-- Regex guide
 https://www.rexegg.com/regex-quickstart.html
 
+-- Lex and Yacc Tutorial
 https://www.ibm.com/developerworks/aix/tutorials/au-lexyacc/index.html
+
+-- Yacc Guide
+https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dgt/index.html
+
+-- Generate the C lex source
+$ flex exampleA.l
+
+-- Compile C source into an application
+$ gcc -o exampleA lex.yy.c -ll

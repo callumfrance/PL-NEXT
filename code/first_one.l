@@ -2,9 +2,9 @@
 #include<stdio.h>
 %}
 
-IDENT                      [0-9]+
+NUMBER                     [0-9]+
 
-NUMBER                     [a-z]+
+IDENT                      [a-z]+
 
 ID_NUM                     [{NUMBER}{ID}]
 
@@ -69,6 +69,6 @@ DECLARATION_UNIT           "DECL""::"{IDENT}("CONST"{CONSTANT_DECLARATION})?("VA
 BASIC_PROGRAM              "PROGRAM"{DECLARATION_UNIT}{IMPLEMENTATION_PART}"TERMINATE"
 
 %%
-{NUMBER}         printf("number found");
-{IDENT}          printf("ident found");
+{NUMBER}         /* printf("number found"); */ // return number;
+{IDENT}          /* printf("ident found"); */  // return ident;
 %%
