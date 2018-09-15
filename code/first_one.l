@@ -1,5 +1,6 @@
 %{
 #include<stdio.h>
+#include "y.tab.h"
 %}
 
 NUMBER                     [0-9]+
@@ -69,6 +70,22 @@ DECLARATION_UNIT           "DECL""::"{IDENT}("CONST"{CONSTANT_DECLARATION})?("VA
 BASIC_PROGRAM              "PROGRAM"{DECLARATION_UNIT}{IMPLEMENTATION_PART}"TERMINATE"
 
 %%
-{NUMBER}         /* printf("number found"); */ // return number;
-{IDENT}          /* printf("ident found"); */  // return ident;
+{NUMBER}              { /* printf("number found"); */ return NUMBER; }
+{IDENT}               { /* printf("ident found"); */  return IDENT; }
+{TERM}                { return TERM; }
+{EXPRESSION}          { return EXPRESSION; }
+{PROCEDURE_CALL}      { return PROCEDURE_CALL; }
+{STATEMENT}           { return STATEMENT; }
+{ASSIGNMENT}          { return ASSIGNMENT; }
+{IF_STATEMENT}        { return IF_STATEMENT; }
+[ \t]+                { ; } /* ignore whitespace, like my boy C */
 %%
+
+#ifndef yywrap
+	yywrap() { return 1; }
+#endif
+
+int main(void) {
+	yylex();  // invokes lexer, returns token
+	return 0;
+}

@@ -12,3 +12,9 @@ $ flex exampleA.l
 
 -- Compile C source into an application
 $ gcc -o exampleA lex.yy.c -ll
+
+
+-- To compile (lecture notes)
+$yacc -d calc.y
+$lex calc.l
+$gcc -o calc y.tab.c lex.yy.c -lfl
