@@ -70,42 +70,62 @@ DECLARATION_UNIT           "DECL""::"{IDENT}("CONST"{CONSTANT_DECLARATION})?("VA
 BASIC_PROGRAM              "PROGRAM"{DECLARATION_UNIT}{IMPLEMENTATION_PART}"TERMINATE"
 
 %%
-{NUMBER}              { /* printf("number found"); */ return NUMBER; }
-{IDENT}               { /* printf("ident found"); */  return IDENT; }
-{TERM}                { return TERM; }
-{EXPRESSION}          { return EXPRESSION; }
-{PROCEDURE_CALL}      { return PROCEDURE_CALL; }
-{STATEMENT}           { return STATEMENT; }
-{ASSIGNMENT}          { return ASSIGNMENT; }
-{IF_STATEMENT}        { return IF_STATEMENT; }
+{NUMBER}              { yylval=atoi(yytext); return NUMBER; }
+{IDENT}               { return IDENT; }
 [ \t]+                { ; } /* ignore whitespace, like my boy C */
 
-
-"+"                   { return ADD; }
-"-"                   { return MIN; }
-"*"                   { return MUL; }
-"/"                   { return DIV; }
-[+-/*;{}.]            { return *yytext; } /* an alternative option? */
+.                     { /* matches all single otherwise unmatched characters */
+                        return (int) yytext[0];
+                      }
 
 "START"               { return START; }
 "STOP"                { return STOP; }
 
 "WHILE"               { return STARTWHILE; }
+"DO"                  { return STARTDO; }
+"OD"                  { return ENDDO; }
 "ELIHW"               { return ENDWHILE; }
 "FOR"                 { return STARTFOR; }
 "ROF"                 { return ENDFOR; }
 "IF"                  { return STARTIF; }
+"THEN"                { return THEN; }
 "FI"                  { return ENDIF; }
 
+"EXECUTE"             { return EXECUTE; }
+"SET"                 { return SET; }
+
 "PROC"                { return PROC; }
+"FUNC"                { return FUNC; }
+"IMPL"                { return IMPL; }
+"::"                  { return IMPLIES; }
 "DECL"                { return DECL; }
+
+"TO"                  { return TO; }
+"ARR"                 { return ARRAY; }
+"OF"                  { return OF; }
+"IS"                  { return IS; }
+
+
+"TYPE"                { return TYPEWORD; }
+"=>"                  { return TYPEARROW; }
+
+"CONST"               { return CONST; }
+"VAR"                 { return VAR; }
+
+"DECLARATION"         { return DECLARATION; }
+"END"                 { return END; }
+
+"PROGRAM"             { return PROGRAM; }
+"TERMINATE"           { return TERMINATE; }
+
+
 %%
 
 #ifndef yywrap
-	yywrap() { return 1; }
+    yywrap() { return 1; }
 #endif
 
 int main(void) {
-	yylex();  // invokes lexer, returns token
-	return 0;
+    yylex();  // invokes lexer, returns token
+    return 0;
 }
