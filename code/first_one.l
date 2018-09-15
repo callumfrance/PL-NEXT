@@ -79,6 +79,26 @@ BASIC_PROGRAM              "PROGRAM"{DECLARATION_UNIT}{IMPLEMENTATION_PART}"TERM
 {ASSIGNMENT}          { return ASSIGNMENT; }
 {IF_STATEMENT}        { return IF_STATEMENT; }
 [ \t]+                { ; } /* ignore whitespace, like my boy C */
+
+
+"+"                   { return ADD; }
+"-"                   { return MIN; }
+"*"                   { return MUL; }
+"/"                   { return DIV; }
+[+-/*;{}.]            { return *yytext; } /* an alternative option? */
+
+"START"               { return START; }
+"STOP"                { return STOP; }
+
+"WHILE"               { return STARTWHILE; }
+"ELIHW"               { return ENDWHILE; }
+"FOR"                 { return STARTFOR; }
+"ROF"                 { return ENDFOR; }
+"IF"                  { return STARTIF; }
+"FI"                  { return ENDIF; }
+
+"PROC"                { return PROC; }
+"DECL"                { return DECL; }
 %%
 
 #ifndef yywrap

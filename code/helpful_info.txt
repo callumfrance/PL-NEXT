@@ -14,6 +14,10 @@ $ flex exampleA.l
 $ gcc -o exampleA lex.yy.c -ll
 
 
+-- Actual good example of how to do it
+https://www.epaperpress.com/lexandyacc/calcl.html
+https://www.epaperpress.com/lexandyacc/calcy.html
+
 -- To compile (lecture notes)
 $yacc -d calc.y
 $lex calc.l
