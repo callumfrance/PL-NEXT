@@ -22,3 +22,6 @@ https://www.epaperpress.com/lexandyacc/calcy.html
 $yacc -d calc.y
 $lex calc.l
 $gcc -o calc y.tab.c lex.yy.c -lfl
+
+-- Adding comment rules in lex
+https://stackoverflow.com/questions/2130097/difficulty-getting-c-style-comments-in-flex-lex
