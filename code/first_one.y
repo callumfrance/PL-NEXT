@@ -1,5 +1,8 @@
 %{
 #include<stdio.h>
+
+int yylex();
+void yyerror(const char *s);
 %}
 
 /* %left '+' '-' '*' '/'
@@ -20,9 +23,11 @@
 %%
 
 basic_program           : PROGRAM declaration_unit implementation_unit TERMINATE
+                        { printf("basic program\n"); }
                         ;
 
 declaration_unit        : DECL IMPLIES ident const_part var_part type_part proc_part func_part DECLARATION END
+                        { printf("declaration unit\n"); }
                         ;
 
 const_part              :
@@ -41,8 +46,101 @@ proc_part               :
                         | procedure_interface
                         ;
 
+procedure_interface     : PROC ident
+                        | PROC ident formal_parameters
+                        { printf("procedure interface\n"); }
+                        ;
 
-compound_statement      : START statements statement STOP
+function_interface      : FUNC ident
+                        | FUNC ident formal_parameters
+                        { printf("function interface\n"); }
+                        ;
+
+type_declaration        : TYPEWORD ident TYPEARROW type ';'
+                        ;
+
+formal_parameters       : '(' list_ident2 ')'
+                        ;
+
+constant_declaration    : declarations ';'
+                        ;
+
+declarations            : ident IS number
+                        | declarations ',' ident IS number
+                        ;
+
+type                    : basic_type
+                        | array_type
+                        ;
+
+enumerated_type         : '{' list_ident '}'
+                        ;
+
+basic_type              : ident
+                        | enumerated_type
+                        | range_type
+                        ;
+
+range                   : number TO number
+                        ;
+
+array_type              : ARRAY ident '[' range ']' OF type
+                        ;
+
+range_type              : '[' range ']'
+                        ;
+
+block                   : specification_part implementation_part
+                        ;
+
+
+specification_part      :
+                        | CONST constant_declaration
+                        | VAR variable_declaration
+                        | procedure_declaration
+                        | function_declaration
+                        ;
+
+implementation_unit     : IMPL IMPLIES ident block '.'
+                        ;
+
+variable_declaration    : match_idents ';'
+                        ;
+
+match_idents            : ident ':' ident
+                        | match_idents ',' ident ':' ident
+                        ;
+
+implementation_part     : statement
+                        ;
+
+function_declaration    : FUNC ident ';' block ';'
+                        ;
+
+procedure_declaration   : PROC ident ';' block ';'
+                        ;
+
+func_part               :
+                        | function_interface
+                        ;
+
+statements              : statement
+                        | statements ';' statement
+                        ;
+
+statement               : assignment
+                        | procedure_call
+                        | if_statement
+                        | while_statement
+                        | do_statement
+                        | for_statement
+                        | compound_statement
+                        ;
+
+procedure_call          : EXECUTE ident
+                        ;
+
+assignment              : ident SET expression
                         ;
 
 for_statement           : STARTFOR ident EQ expression STARTDO statements statement ENDFOR
@@ -58,102 +156,9 @@ while_statement         : STARTWHILE expression STARTDO statement ENDWHILE
 if_statement            : STARTIF expression THEN statement ENDIF
                         ;
 
-procedure_call          : EXECUTE ident
+compound_statement      : START statements statement STOP
                         ;
 
-expression              : term
-                        | expression '+' expression
-                        | expression '-' expression
-                        ;
-
-assignment              : ident SET expression
-                        ;
-
-statement               : assignment
-                        | procedure_call
-                        | if_statement
-                        | while_statement
-                        | do_statement
-                        | for_statement
-                        | compound_statement
-                        ;
-
-statements              : statement
-                        | statements ';' statement
-                        ;
-
-implementation_part     : statement
-                        ;
-
-function_declaration    : FUNC ident ';' block ';'
-
-procedure_declaration   : PROC ident ';' block ';'
-
-specification_part      :
-                        | CONST constant_declaration
-                        | VAR variable_declaration
-                        | procedure_declaration
-                        | function_declaration
-                        ;
-
-block                   : specification_part implementation_part
-                        ;
-
-implementation_unit     : IMPL IMPLIES ident block '.'
-                        ;
-
-range                   : number TO number
-                        ;
-
-array_type              : ARRAY ident '[' range ']' OF type
-                        ;
-
-range_type              : '[' range ']'
-                        ;
-
-enumerated_type         : '{' list_ident '}'
-                        ;
-
-basic_type              : ident
-                        | enumerated_type
-                        | range_type
-                        ;
-
-type                    : basic_type
-                        | array_type
-                        ;
-
-match_idents            : ident ':' ident
-                        | match_idents ',' ident ':' ident
-                        ;
-
-variable_declaration    : match_idents ';'
-                        ;
-
-declarations            : ident IS number
-                        | declarations ',' ident IS number
-                        ;
-
-constant_declaration    : declarations ';'
-                        ;
-
-formal_parameters       : '(' list_ident2 ')'
-                        ;
-
-type_declaration        : TYPEWORD ident TYPEARROW type ';'
-                        ;
-
-function_interface      : FUNC ident
-                        | FUNC ident formal_parameters
-                        ;
-
-procedure_interface     : PROC ident
-                        | PROC ident formal_parameters
-                        ;
-
-func_part               :
-                        | function_interface
-                        ;
 list_ident              : ident
                         | list_ident ',' ident
                         ;
@@ -162,6 +167,10 @@ list_ident2             : ident
                         | list_ident2 ';'
                         ;
 
+expression              : term
+                        | expression '+' expression
+                        | expression '-' expression
+                        ;
 
 term                    : id_num
                         | term '*' term
@@ -174,20 +183,24 @@ id_num                  :
                         ;
 
 ident                   : IDENT
+                        { printf("ident\n"); }
                         ;
 
 number                  : NUMBER
+                        { printf("number\n"); }
                         ;
 
 
 %%
-main()
+int main()
 {
     return yyparse();
 }
-yyerror()
+void yyerror(const char *s)
 {
     printf("\n============================\n");
     printf(  "A PL-NEXT error has occurred\n");
     printf(  "============================\n");
+    printf("\tMessage:\n");
+    printf("\t%s\n\n", s);
 }

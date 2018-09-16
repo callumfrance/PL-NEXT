@@ -4,6 +4,8 @@
 #include "y.tab.h"
 %}
 %x C_COMMENT
+NUMBER                     [0-9]+
+IDENT                      [a-z]+
 %%
 {NUMBER}                      { yylval=atoi(yytext); return NUMBER; }
 {IDENT}                       { return IDENT; }
@@ -59,12 +61,3 @@
 
 
 %%
-
-#ifndef yywrap
-    yywrap() { return 1; }
-#endif
-
-int main(void) {
-    yylex();  // invokes lexer, returns token
-    return 0;
-}

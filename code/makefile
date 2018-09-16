@@ -11,6 +11,6 @@ y.tab.c:        first_one.y
 lex.yy.c:       first_one.l
 				flex first_one.l
 PLNEXT:         $(OBJS)
-				$(CC) $(OBJS)  -o $@ -lfl -lm
+				$(CC) $(OBJS)  -o $@ -ll -lm
 clean:;         rm -f $(OBJS) core *~ \#* *.o $(PROGRAM) \
 				y.* lex.yy.* y.tab.*
