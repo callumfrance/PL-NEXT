@@ -1,3 +1,9 @@
+-- How to make the project
+$make
+
+-- Delete the generated project files after it has been made
+$make clean
+
 -- Regex guide
 https://www.rexegg.com/regex-quickstart.html
 
@@ -13,15 +19,9 @@ $ flex exampleA.l
 -- Compile C source into an application
 $ gcc -o exampleA lex.yy.c -ll
 
-
 -- Actual good example of how to do it
 https://www.epaperpress.com/lexandyacc/calcl.html
 https://www.epaperpress.com/lexandyacc/calcy.html
-
--- To compile (lecture notes)
-$yacc -d calc.y
-$lex calc.l
-$gcc -o calc y.tab.c lex.yy.c -lfl
 
 -- Adding comment rules in lex
 https://stackoverflow.com/questions/2130097/difficulty-getting-c-style-comments-in-flex-lex
