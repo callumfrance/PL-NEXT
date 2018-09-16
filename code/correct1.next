@@ -6,12 +6,29 @@ DECL :: telemachus
     VAR
         helen : menelaus,
         gorgo : hector;
+    TYPE
+        nestor => [10 TO 20];
+    PROC
+        scamander(teucer; glaucia)
+    FUNC
+        iris(pothos)
 DECLARATION END
 
 IMPL :: hector
-    IF 1 THEN
-        gorgo SET 100
-    FI
+    PROC
+        telamon;
+        PROC
+            ajax;
+            VAR
+                aias : lesser;
+            IF aias THEN
+                START
+                    IF menelaus THEN
+                        gorgo SET gorgo + 1
+                    FI
+                STOP
+            FI
+        EXECUTE ajax;
 .
 TERMINATE
 

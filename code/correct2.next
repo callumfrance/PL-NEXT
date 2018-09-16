@@ -1,0 +1,9 @@
+PROGRAM
+DECL :: cronus
+DECLARATION END
+
+IMPL :: uranus
+    hyperion SET 0
+.
+TERMINATE
+

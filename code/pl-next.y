@@ -1,3 +1,4 @@
+/* Must display all matched symbols to the screen as it is parsed */
 %{
 #include<stdio.h>
 
