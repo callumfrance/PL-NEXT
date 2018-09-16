@@ -1,16 +1,16 @@
 YFLAGS        = -d
-PROGRAM       = PLNEXT
+PROGRAM       = PL-NEXT
 OBJS          = y.tab.o lex.yy.o
 SRCS          = y.tab.c lex.yy.c
 CC            = gcc
 all:            $(PROGRAM)
 .c.o:           $(SRCS)
 				$(CC) -c $*.c -o $@ -O
-y.tab.c:        first_one.y
-				yacc $(YFLAGS) first_one.y
-lex.yy.c:       first_one.l
-				flex first_one.l
-PLNEXT:         $(OBJS)
+y.tab.c:        pl-next.y
+				yacc $(YFLAGS) pl-next.y
+lex.yy.c:       pl-next.l
+				flex pl-next.l
+PL-NEXT:         $(OBJS)
 				$(CC) $(OBJS)  -o $@ -ll -lm
 clean:;         rm -f $(OBJS) core *~ \#* *.o $(PROGRAM) \
 				y.* lex.yy.* y.tab.*

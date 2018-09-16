@@ -13,4 +13,5 @@ IMPL :: hector
         gorgo SET 100
     FI
 .
+TERMINATE
 

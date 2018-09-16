@@ -25,3 +25,6 @@ https://www.epaperpress.com/lexandyacc/calcy.html
 
 -- Adding comment rules in lex
 https://stackoverflow.com/questions/2130097/difficulty-getting-c-style-comments-in-flex-lex
+
+-- Yacc Declarations (`%`)
+https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/com.ibm.aix.genprogc/yaac_file_declarations.htm
