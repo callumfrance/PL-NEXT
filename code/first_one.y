@@ -5,16 +5,19 @@ int yylex();
 void yyerror(const char *s);
 %}
 
-/* %left '+' '-' '*' '/'
+%start basic_program
 
-%token <number> NUMBER
-%token <sIndex> IDENT */
+%left '+' '-'
+%left '*' '/'
+
+%token NUMBER
+%token IDENT
 
 %token START STOP
-%token IDENT NUMBER
+/* %token IDENT NUMBER */
 %token STARTWHILE ENDWHILE STARTDO ENDDO STARTFOR ENDFOR STARTIF THEN ENDIF
 %token EXECUTE SET
-%token PROC FUNC IMPL IMPLIES EQ DECL
+%token PROC FUNC IMPL IMPLIES ISEQ DECL
 %token TO ARRAY OF IS
 %token TYPEWORD TYPEARROW
 %token CONST VAR DECLARATION END
@@ -23,43 +26,49 @@ void yyerror(const char *s);
 %%
 
 basic_program           : PROGRAM declaration_unit implementation_unit TERMINATE
-                        { printf("basic program\n"); }
+                        { printf("basic program, "); }
                         ;
 
 declaration_unit        : DECL IMPLIES ident const_part var_part type_part proc_part func_part DECLARATION END
-                        { printf("declaration unit\n"); }
+                        { printf("declaration unit, "); }
                         ;
 
 const_part              :
                         | CONST constant_declaration
+                        { printf("constant declaration part, "); }
                         ;
 
 var_part                :
                         | VAR variable_declaration
+                        { printf("variable declaration part, "); }
                         ;
 
 type_part               :
                         | type_declaration
+                        { printf("type declaration part, "); }
                         ;
 
 proc_part               :
                         | procedure_interface
+                        { printf("procedure interface part, "); }
                         ;
 
 procedure_interface     : PROC ident
                         | PROC ident formal_parameters
-                        { printf("procedure interface\n"); }
+                        { printf("procedure interface, "); }
                         ;
 
 function_interface      : FUNC ident
                         | FUNC ident formal_parameters
-                        { printf("function interface\n"); }
+                        { printf("function interface, "); }
                         ;
 
 type_declaration        : TYPEWORD ident TYPEARROW type ';'
+                        { printf("type declaration, "); }
                         ;
 
 formal_parameters       : '(' list_ident2 ')'
+                        { printf("formal parameters, "); }
                         ;
 
 constant_declaration    : declarations ';'
@@ -143,20 +152,25 @@ procedure_call          : EXECUTE ident
 assignment              : ident SET expression
                         ;
 
-for_statement           : STARTFOR ident EQ expression STARTDO statements statement ENDFOR
+for_statement           : STARTFOR ident ISEQ expression STARTDO statements statement ENDFOR
+                        { printf("for statement, "); }
                         ;
 
 do_statement            : STARTDO statements statement STARTWHILE expression ENDDO
+                        { printf("do statement, "); }
                         ;
 
 while_statement         : STARTWHILE expression STARTDO statement ENDWHILE
                         | STARTWHILE expression STARTDO statements statement ENDWHILE
+                        { printf("while statement, "); }
                         ;
 
 if_statement            : STARTIF expression THEN statement ENDIF
+                        { printf("if statement, "); }
                         ;
 
 compound_statement      : START statements statement STOP
+                        { printf("compound statement, "); }
                         ;
 
 list_ident              : ident
@@ -170,37 +184,40 @@ list_ident2             : ident
 expression              : term
                         | expression '+' expression
                         | expression '-' expression
+                        { printf("expression %d, ", $1); }
                         ;
 
 term                    : id_num
                         | term '*' term
                         | term '/' term
+                        { printf("term %d, ", $1); }
                         ;
 
 id_num                  :
                         | number
                         | ident
+                        { printf("id_num %d, ", $1); }
                         ;
 
 ident                   : IDENT
-                        { printf("ident\n"); }
+                        { printf("ident %d, ", $1); }
                         ;
 
 number                  : NUMBER
-                        { printf("number\n"); }
+                        { printf("number %d, ", $1); }
                         ;
 
 
 %%
 int main()
 {
-    return yyparse();
+    yyparse();
 }
 void yyerror(const char *s)
 {
-    printf("\n============================\n");
-    printf(  "A PL-NEXT error has occurred\n");
-    printf(  "============================\n");
-    printf("\tMessage:\n");
-    printf("\t%s\n\n", s);
+    printf("\n\t============================\n");
+    printf(  "\tA PL-NEXT error has occurred\n");
+    printf(  "\t============================\n");
+    printf("Message: ");
+    printf("%s\n\n", s);
 }

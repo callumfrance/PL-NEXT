@@ -1,0 +1,16 @@
+PROGRAM
+DECL :: telemachus
+    CONST
+        menelaus IS 5,
+        hector IS 9;
+    VAR
+        helen : menelaus,
+        gorgo : hector;
+DECLARATION END
+
+IMPL :: hector
+    IF 1 THEN
+        gorgo SET 100
+    FI
+.
+

@@ -38,7 +38,7 @@ IDENT                      [a-z]+
 "FUNC"                        { return FUNC; }
 "IMPL"                        { return IMPL; }
 "::"                          { return IMPLIES; }
-":="                          { return EQ; }
+":="                          { return ISEQ; }
 "DECL"                        { return DECL; }
 
 "TO"                          { return TO; }
