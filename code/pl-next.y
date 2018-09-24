@@ -8,8 +8,6 @@ void yyerror(const char *s);
 
 %start basic_program
 
-%left ADD SUB
-%left MUL DIV
 
 %token NUMBER
 %token IDENT
@@ -22,6 +20,12 @@ void yyerror(const char *s);
 %token TYPEWORD TYPEARROW
 %token CONST VAR DECLARATION END
 %token PROGRAM TERMINATE
+
+%token OPENBRACE CLOSEBRACE OPENBRACKET CLOSEBRACKET OPENRANGE CLOSERANGE 
+%token CLOSEIMPUNIT SEMICOLON COMMA COLON
+
+%left ADD SUB
+%left MUL DIV
 
 %%
 
@@ -66,21 +70,21 @@ function_interface      : FUNC ident
                         { printf("Function interface with parameters\n"); }
                         ;
 
-type_declaration        : TYPEWORD ident TYPEARROW type ';'
+type_declaration        : TYPEWORD ident TYPEARROW type SEMICOLON
                         { printf("Type declaration, "); }
                         ;
 
-formal_parameters       : '(' list_ident2 ')'
+formal_parameters       : OPENBRACKET list_ident2 CLOSEBRACKET
                         { printf("formal parameters, "); }
                         ;
 
-constant_declaration    : declarations ';'
+constant_declaration    : declarations SEMICOLON
                         { printf("Constant declarations, "); }
                         ;
 
 declarations            : ident IS number
                         { printf("Singular declaration, "); }
-                        | declarations ',' ident IS number
+                        | declarations COMMA ident IS number
                         { printf("Multiple declarations, "); }
                         ;
 
@@ -90,7 +94,7 @@ type                    : basic_type
                         { printf("Type is array type, "); }
                         ;
 
-enumerated_type         : '{' list_ident '}'
+enumerated_type         : OPENBRACE list_ident CLOSEBRACE
                         { printf("Enumerated type, "); }
                         ;
 
@@ -106,11 +110,11 @@ range                   : number TO number
                         { printf("Range, "); }
                         ;
 
-array_type              : ARRAY ident '[' range ']' OF type
+array_type              : ARRAY ident OPENRANGE range CLOSERANGE OF type
                         { printf("Array type, "); }
                         ;
 
-range_type              : '[' range ']'
+range_type              : OPENRANGE range CLOSERANGE
                         { printf("Range type, "); }
                         ;
 
@@ -130,27 +134,27 @@ specification_part      :
                         { printf("Specification part function_declaration\n"); }
                         ;
 
-implementation_unit     : IMPL IMPLIES ident block '.'
+implementation_unit     : IMPL IMPLIES ident block CLOSEIMPUNIT
                         { printf("\nIMPLEMENTATION UNIT.\n"); }
                         ;
 
-variable_declaration    : match_idents ';'
+variable_declaration    : match_idents SEMICOLON
                         { printf("Variable declaration, "); }
                         ;
 
-match_idents            : ident ':' ident
-                        | match_idents ',' ident ':' ident
+match_idents            : ident COLON ident
+                        | match_idents COMMA ident COLON ident
                         ;
 
 implementation_part     : statement
                         { printf("Implementation Part, \n"); }
                         ;
 
-function_declaration    : FUNC ident ';' block ';'
+function_declaration    : FUNC ident SEMICOLON block SEMICOLON
                         { printf("Function declaration, "); }
                         ;
 
-procedure_declaration   : PROC ident ';' block ';'
+procedure_declaration   : PROC ident SEMICOLON block SEMICOLON
                         { printf("Procedure declaration, "); }
                         ;
 
@@ -161,7 +165,7 @@ func_part               :
 
 statements              : statement
                         { printf("One in 'statements'\n"); }
-                        | statements ';' statement
+                        | statements SEMICOLON statement
                         { printf("Statements\n"); }
                         ;
 
@@ -210,31 +214,30 @@ compound_statement      : START statements STOP
                         ;
 
 list_ident              : ident
-                        | list_ident ',' ident
+                        | list_ident COMMA ident
                         ;
 
 list_ident2             : ident
-                        | list_ident2 ';' ident
+                        | list_ident2 SEMICOLON ident
                         ;
 
 expression              : term
-                        { printf("Expression is a term: %d, ", $1); }
+                        { printf("Expression is a term, "); }
                         | expression ADD expression
-                        { printf("Expression is an addition %d, ", $1); }
+                        { printf("Expression is an addition, "); }
                         | expression SUB expression
-                        { printf("Expressions is a subtraction %d, ", $1); }
+                        { printf("Expressions is a subtraction, "); }
                         ;
 
 term                    : id_num
-                        { printf("Expression is an id_num: %d, ", $1); }
+                        { printf("Expression is an id_num, "); }
                         | term MUL term
-                        { printf("Term is a multiplication %d, ", $1); }
+                        { printf("Term is a multiplication, "); }
                         | term DIV term
-                        { printf("Term is a division %d, ", $1); }
+                        { printf("Term is a division, "); }
                         ;
 
-id_num                  :
-                        | number
+id_num                  : number
                         { printf("id_num is a number %d, ", $1); }
                         | ident
                         { printf("id_num is an ident %d, ", $1); }

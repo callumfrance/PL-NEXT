@@ -17,12 +17,24 @@ IDENT                      [a-z]+
 <C_COMMENT>\n                 { }
 <C_COMMENT>.                  { }
 
-.                             { return (int) yytext[0]; } /* matches all single otherwise unmatched characters */
+";"                           { return SEMICOLON; }
 
-'*'                           { return MUL; }
-'/'                           { return DIV; }
-'+'                           { return ADD; }
-'-'                           { return SUB; }
+
+"("                           { return OPENBRACKET; }
+")"                           { return CLOSEBRACKET; }
+"{"                           { return OPENBRACE; }
+"}"                           { return CLOSEBRACE; }
+"["                           { return OPENRANGE; }
+"]"                           { return CLOSERANGE; }
+"."                           { return CLOSEIMPUNIT; }
+","                           { return COMMA; }
+":"                           { return COLON; }
+
+"*"                           { return MUL; }
+"/"                           { return DIV; }
+"+"                           { return ADD; }
+"-"                           { return SUB; }
+
 
 "START"                       { printf("START\n"); return START; }
 "STOP"                        { printf("STOP\n"); return STOP; }
