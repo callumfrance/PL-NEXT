@@ -46,7 +46,8 @@ basic_program           : PROGRAM declaration_unit implementation_unit TERMINATE
                         ;
 
 declaration_unit        : DECL IMPLIES ident const_part var_part type_part proc_part func_part DECLARATION END
-                        { printf("\nDECLARATION UNIT.\n"); }
+                        { printf("\nDECLARATION UNIT.\n"
+						"-----------------"); }
                         ;
 
 const_part              :
@@ -86,7 +87,7 @@ type_declaration        : TYPEWORD ident TYPEARROW type ';'
                         ;
 
 formal_parameters       : '(' list_ident2 ')'
-                        { printf("formal parameters, "); }
+                        { printf("Formal parameters, "); }
                         ;
 
 constant_declaration    : declarations ';'
@@ -130,7 +131,7 @@ range_type              : '[' range ']'
                         ;
 
 block                   : specification_part implementation_part
-                        { printf("Block, "); }
+                        { printf("BLOCK\n"); }
                         ;
 
 
@@ -146,7 +147,8 @@ specification_part      :
                         ;
 
 implementation_unit     : IMPL IMPLIES ident block '.'
-                        { printf("\nIMPLEMENTATION UNIT.\n"); }
+                        { printf("\nIMPLEMENTATION UNIT.\n"
+						"--------------------"); }
                         ;
 
 variable_declaration    : match_idents ';'
@@ -158,7 +160,7 @@ match_idents            : ident ':' ident
                         ;
 
 implementation_part     : statement
-                        { printf("Implementation Part, \n"); }
+                        { printf("Implementation Part\n"); }
                         ;
 
 function_declaration    : FUNC ident ';' block ';'
@@ -201,7 +203,7 @@ procedure_call          : EXECUTE ident
                         ;
 
 assignment              : ident SET expression
-                        { printf("Assignment(%d is set to %d), ", $$, $3); }
+                        { printf("Assignment, "); }
                         ;
 
 for_statement           : STARTFOR ident ISEQ expression STARTDO statements ENDFOR
@@ -249,17 +251,17 @@ term                    : id_num
                         ;
 
 id_num                  : number
-                        { printf("id_num is a number %d, ", $1); }
+                        { printf("id_num is a number, "); }
                         | ident
-                        { printf("id_num is an ident %d, ", $1); }
+                        { printf("id_num is an ident, "); }
                         ;
 
 ident                   : IDENT
-                        { printf("ident %d-%d, ", $$, $1); }
+                        { /*printf("ident, ");*/ }
                         ;
 
 number                  : NUMBER
-                        { printf("number %d-%d, ", $$, $1); }
+                        { /*printf("number, ");*/ }
                         ;
 
 
