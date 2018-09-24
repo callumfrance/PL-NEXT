@@ -1,4 +1,4 @@
-/* Must display all matched symbols to the screen as it is parsed */
+/* Must display all matched symbols to the screen as it is parsed. */
 %{
 #include<stdio.h>
 
@@ -15,7 +15,6 @@ void yyerror(const char *s);
 %token IDENT
 
 %token START STOP
-/* %token IDENT NUMBER */
 %token STARTWHILE ENDWHILE STARTDO ENDDO STARTFOR ENDFOR STARTIF THEN ENDIF
 %token EXECUTE SET
 %token PROC FUNC IMPL IMPLIES ISEQ DECL
@@ -27,7 +26,8 @@ void yyerror(const char *s);
 %%
 
 basic_program           : PROGRAM declaration_unit implementation_unit TERMINATE
-                        { printf("basic program, "); }
+                        { printf("basic program finished.\n\texiting...\n");
+                          return(0); }
                         ;
 
 declaration_unit        : DECL IMPLIES ident const_part var_part type_part proc_part func_part DECLARATION END
@@ -151,6 +151,7 @@ procedure_call          : EXECUTE ident
                         ;
 
 assignment              : ident SET expression
+                        { printf("assignment(%d is set to %d), ", $$, $3); }
                         ;
 
 for_statement           : STARTFOR ident ISEQ expression STARTDO statements statement ENDFOR
@@ -201,11 +202,11 @@ id_num                  :
                         ;
 
 ident                   : IDENT
-                        { printf("ident %d, ", $1); }
+                        { printf("ident %d-%d, ", $$, $1); }
                         ;
 
 number                  : NUMBER
-                        { printf("number %d, ", $1); }
+                        { printf("number %d-%d, ", $$, $1); }
                         ;
 
 

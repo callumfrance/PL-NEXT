@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include "y.tab.h"
 %}
+%option noyywrap
 %x C_COMMENT
 NUMBER                     [0-9]+
 IDENT                      [a-z]+
