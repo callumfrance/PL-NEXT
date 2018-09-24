@@ -49,4 +49,26 @@ $make clean
 
 --------------------------------------------------
 
-#### Resources
+### Debugging
+
+In order to ensure that my Lex and Yacc correctly reflected the provided syntax diagrams, example files were created with the `*.next` file extension. Files labelled `correcX.next` were created to be syntactically perfect, combining many of the EBNF rules correctly within one file. Files labelled `wrongX.next` each targeted one specific grammar outlined in Yacc.
+
+This process lead to many 'bugfixes' being picked up in my code, which needed to be amended in the Yacc and Lex files. This debugging process increased the reliability and standard of the syntax checker created.
+
+--------------------------------------------------
+
+### Resources
+- Regex guide
+    - https://www.rexegg.com/regex-quickstart.html
+- Lex and Yacc Tutorial
+    - https://www.ibm.com/developerworks/aix/tutorials/au-lexyacc/index.html
+- Yacc Guide
+    - https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dgt/index.html
+- Actual good example of how to do it
+    - https://www.epaperpress.com/lexandyacc/calcl.html
+    - https://www.epaperpress.com/lexandyacc/calcy.html
+- Adding comment rules in lex
+    - https://stackoverflow.com/questions/2130097/difficulty-getting-c-style-comments-in-flex-lex
+- Yacc Declarations (`%`)
+    - https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/com.ibm.aix.genprogc/yaac_file_declarations.htm
+

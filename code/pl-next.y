@@ -1,4 +1,9 @@
-/* Must display all matched symbols to the screen as it is parsed. */
+ /* Title: pl-next.y
+    Author: Callum France
+ */
+ /* =================================================
+    Declarations section
+    ================================================= */
 %{
 #include<stdio.h>
 
@@ -6,8 +11,15 @@ int yylex();
 void yyerror(const char *s);
 %}
 
+ /* -------------------------------------------------
+    Tokens
+        Tokens are used to identify keywords from Lex
+    -------------------------------------------------
+ */
 %start basic_program
 
+ /* %left is used for a token when the leftmost word should gain priority
+ */
 %left '+' '-'
 %left '*' '/'
 
@@ -23,8 +35,10 @@ void yyerror(const char *s);
 %token CONST VAR DECLARATION END
 %token PROGRAM TERMINATE
 
-
 %%
+ /* =================================================
+    Rules
+    ================================================= */
 
 basic_program           : PROGRAM declaration_unit implementation_unit TERMINATE
                         { printf("Basic Program Finished.\n\texiting...\n");
@@ -250,12 +264,18 @@ number                  : NUMBER
 
 
 %%
+ /* =================================================
+    Routines
+    ================================================= */
 int main()
 {
+    // The main function is simply the parser.
     yyparse();
 }
 void yyerror(const char *s)
 {
+    // The behaviour the program takes when an error is encountered
+    //     Prints the error message string with an error header
     printf("\n\t============================\n");
     printf(  "\tA PL-NEXT error has occurred\n");
     printf(  "\t============================\n");

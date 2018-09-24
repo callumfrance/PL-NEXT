@@ -1,24 +1,40 @@
+ /* Title: pl-next.l
+    Author: Callum France
+ */
+ /* =================================================
+    Definition section
+    ================================================= */
 %{
 #include<stdio.h>
 #include<stdlib.h>
 #include "y.tab.h"
 %}
+ /* this option aids compilation */
 %option noyywrap
+ /* below defines a context to allows block comments in PL-NEXT */
 %x C_COMMENT
+ /* these are the two fundamental types in PL-NEXT */
 NUMBER                     [0-9]+
 IDENT                      [a-z]+
 %%
+ /* =================================================
+    Rules section
+    ================================================= */
+
+ /* The below C line converts the parsed number into an actual integer */
 {NUMBER}                      { yylval=atoi(yytext); return NUMBER; }
 {IDENT}                       { return IDENT; }
-[ \t]+                        { ; } /* ignore whitespace, like my boy C */
+ /* ignore whitespace, like my boy C */
+[ \t]+                        { ; }
 
-"/*"                          { BEGIN(C_COMMENT); } /* add C style comments */
+ /* add C style comments */
+"/*"                          { BEGIN(C_COMMENT); }
 <C_COMMENT>"*/"               { BEGIN(INITIAL); }
 <C_COMMENT>\n                 { }
 <C_COMMENT>.                  { }
 
+ /* Any otherwise unrecognized CHAR is passed directly into Yacc */
 .                             { return (int) yytext[0]; }
-
 
 "START"                       { printf("START\n"); return START; }
 "STOP"                        { printf("STOP\n"); return STOP; }
@@ -72,3 +88,6 @@ return PROGRAM; }
 
 
 %%
+ /* =================================================
+    User subroutines - there are none
+    ================================================= */
