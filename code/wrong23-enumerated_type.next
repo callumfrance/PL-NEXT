@@ -1,0 +1,41 @@
+PROGRAM
+DECL :: telemachus
+    CONST
+        menelaus IS 5,
+        hector IS 9;
+    VAR
+        helen : menelaus,
+        gorgo : hector;
+    TYPE
+        monarchs => {alcinous, arete, nestor,
+                     agamemnon, menelaus, 7, nausicaa};
+    PROC
+        scamander(teucer; glaucia)
+    FUNC
+        iris(pothos)
+DECLARATION END
+
+IMPL :: hector
+    FUNC
+        telamon;
+        VAR
+            aias : lesser;
+        START
+            IF briseis THEN
+                chryseis SET 111
+            FI
+        STOP;
+    START
+        DO pandaros SET lykaon WHILE
+            demeter + onchestos
+        OD;
+        FOR polites := 2+2 DO
+            EXECUTE pisistratus
+        ROF;
+        WHILE osads+ojn DO
+            po SET 10
+        ELIHW
+    STOP
+.
+TERMINATE
+

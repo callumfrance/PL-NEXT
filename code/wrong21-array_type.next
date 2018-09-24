@@ -1,0 +1,18 @@
+PROGRAM
+DECL :: fruit
+    TYPE
+        grapebunch => ARR grape[30 TO 70] OF ARR dimensions[1 TO 3];
+    PROC
+        rollup
+DECLARATION END
+
+IMPL :: vegetable
+    FUNC
+        gourd;
+        VAR
+            squash : pumpkin;
+        squah SET 12+12/5*3-1;
+    onion SET 99
+.
+TERMINATE
+
