@@ -27,8 +27,10 @@ IMPL :: hector
                         gorgo SET gorgo + 1
                     FI
                 STOP
-            FI
+            FI;
         EXECUTE ajax;
 .
 TERMINATE
+
+PROCEDURE DECLARATION > BLOCK > IMPLEMENTATION PART > STATEMENT > IF
 

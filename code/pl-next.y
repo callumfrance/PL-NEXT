@@ -31,7 +31,7 @@ basic_program           : PROGRAM declaration_unit implementation_unit TERMINATE
                         ;
 
 declaration_unit        : DECL IMPLIES ident const_part var_part type_part proc_part func_part DECLARATION END
-                        { printf("declaration unit, "); }
+                        { printf("\nDECLARATION UNIT.\n"); }
                         ;
 
 const_part              :
@@ -166,24 +166,24 @@ procedure_call          : EXECUTE ident
                         ;
 
 assignment              : ident SET expression
-                        { printf("assignment(%d is set to %d), ", $$, $3); }
+                        { printf("Assignment(%d is set to %d), ", $$, $3); }
                         ;
 
 for_statement           : STARTFOR ident ISEQ expression STARTDO statements statement ENDFOR
-                        { printf("for statement, "); }
+                        { printf("For statement, "); }
                         ;
 
 do_statement            : STARTDO statements statement STARTWHILE expression ENDDO
-                        { printf("do statement, "); }
+                        { printf("Do statement, "); }
                         ;
 
 while_statement         : STARTWHILE expression STARTDO statement ENDWHILE
                         | STARTWHILE expression STARTDO statements statement ENDWHILE
-                        { printf("while statement, "); }
+                        { printf("While statement, "); }
                         ;
 
 if_statement            : STARTIF expression THEN statement ENDIF
-                        { printf("if statement, "); }
+                        { printf("If statement, "); }
                         ;
 
 compound_statement      : START statements statement STOP
