@@ -17,18 +17,12 @@ DECLARATION END
 IMPL :: hector
     PROC
         telamon;
-        PROC
-            ajax;
-            VAR
-                aias : lesser;
-            IF aias THEN
-                START
-                    IF menelaus THEN
-                        gorgo SET gorgo + 1
-                    FI
-                STOP
-            FI;
-        EXECUTE ajax;
+        VAR
+            aias : lesser;
+        START
+            asd SET 11;
+            rega SET 12;
+        STOP
 .
 TERMINATE
 
@@ -47,6 +41,7 @@ PROC
                     THEN
                             START
                                     IF
+                                                ident {menelaus}
                                     THEN
                                             ident {gorgo}
                                             SET

@@ -55,17 +55,19 @@ proc_part               :
                         ;
 
 procedure_interface     : PROC ident
+                        { printf("Procedure interface without parameters\n"); }
                         | PROC ident formal_parameters
-                        { printf("procedure interface, "); }
+                        { printf("Procedure interface with parameters\n"); }
                         ;
 
 function_interface      : FUNC ident
+                        { printf("Function interface without parameters\n"); }
                         | FUNC ident formal_parameters
-                        { printf("function interface, "); }
+                        { printf("Function interface with parameters\n"); }
                         ;
 
 type_declaration        : TYPEWORD ident TYPEARROW type ';'
-                        { printf("type declaration, "); }
+                        { printf("Type declaration, "); }
                         ;
 
 formal_parameters       : '(' list_ident2 ')'
@@ -77,12 +79,15 @@ constant_declaration    : declarations ';'
                         ;
 
 declarations            : ident IS number
+                        { printf("Singular declaration, "); }
                         | declarations ',' ident IS number
-                        { printf("Declarations, "); }
+                        { printf("Multiple declarations, "); }
                         ;
 
 type                    : basic_type
+                        { printf("Type is basic type, "); }
                         | array_type
+                        { printf("Type is array type, "); }
                         ;
 
 enumerated_type         : '{' list_ident '}'
@@ -90,9 +95,11 @@ enumerated_type         : '{' list_ident '}'
                         ;
 
 basic_type              : ident
+                        { printf("Basic type is ident, "); }
                         | enumerated_type
+                        { printf("Basic type is enumerated_type, "); }
                         | range_type
-                        { printf("Basic type, "); }
+                        { printf("Basic type is range_type, "); }
                         ;
 
 range                   : number TO number
@@ -114,13 +121,17 @@ block                   : specification_part implementation_part
 
 specification_part      :
                         | CONST constant_declaration
+                        { printf("Specification part constant_declaration\n"); }
                         | VAR variable_declaration
+                        { printf("Specification part variable_declaration\n"); }
                         | procedure_declaration
+                        { printf("Specification part procedure_declaration\n"); }
                         | function_declaration
-                        { printf("Specification part, "); }
+                        { printf("Specification part function_declaration\n"); }
                         ;
 
 implementation_unit     : IMPL IMPLIES ident block '.'
+                        { printf("Implementation unit\n"); }
                         ;
 
 variable_declaration    : match_idents ';'
@@ -132,6 +143,7 @@ match_idents            : ident ':' ident
                         ;
 
 implementation_part     : statement
+                        { printf("Implementation Part\n"); }
                         ;
 
 function_declaration    : FUNC ident ';' block ';'
@@ -147,8 +159,10 @@ func_part               :
                         { printf("Function interface, "); }
                         ;
 
-statements              : statement
+statements              :
+                        | statement ';'
                         | statements ';' statement
+                        { printf("**Statements**, "); }
                         ;
 
 statement               : assignment
@@ -187,7 +201,7 @@ if_statement            : STARTIF expression THEN statement ENDIF
                         ;
 
 compound_statement      : START statements statement STOP
-                        { printf("compound statement, "); }
+                        { printf("Compound statement, "); }
                         ;
 
 list_ident              : ident
