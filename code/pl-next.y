@@ -26,7 +26,7 @@ void yyerror(const char *s);
 %%
 
 basic_program           : PROGRAM declaration_unit implementation_unit TERMINATE
-                        { printf("basic program finished.\n\texiting...\n");
+                        { printf("Basic Program Finished.\n\texiting...\n");
                           return(0); }
                         ;
 
@@ -36,22 +36,22 @@ declaration_unit        : DECL IMPLIES ident const_part var_part type_part proc_
 
 const_part              :
                         | CONST constant_declaration
-                        { printf("constant declaration part, "); }
+                        { printf("\nConstant Declaration Part"); }
                         ;
 
 var_part                :
                         | VAR variable_declaration
-                        { printf("variable declaration part, "); }
+                        { printf("\nVariable Declaration Part"); }
                         ;
 
 type_part               :
                         | type_declaration
-                        { printf("type declaration part, "); }
+                        { printf("\nType Declaration Part"); }
                         ;
 
 proc_part               :
                         | procedure_interface
-                        { printf("procedure interface part, "); }
+                        { printf("\nProcedure Interface Part"); }
                         ;
 
 procedure_interface     : PROC ident
@@ -131,7 +131,7 @@ specification_part      :
                         ;
 
 implementation_unit     : IMPL IMPLIES ident block '.'
-                        { printf("Implementation unit\n"); }
+                        { printf("\nIMPLEMENTATION UNIT.\n"); }
                         ;
 
 variable_declaration    : match_idents ';'
@@ -156,13 +156,13 @@ procedure_declaration   : PROC ident ';' block ';'
 
 func_part               :
                         | function_interface
-                        { printf("Function interface, "); }
+                        { printf("\nFunction Interface Part"); }
                         ;
 
 statements              : statement
                         { printf("One in 'statements'\n"); }
                         | statements ';' statement
-                        { printf("**Statements** \n"); }
+                        { printf("Statements\n"); }
                         ;
 
 statement               : assignment
