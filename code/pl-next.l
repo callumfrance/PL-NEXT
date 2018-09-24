@@ -19,8 +19,8 @@ IDENT                      [a-z]+
 
 .                             { return (int) yytext[0]; } /* matches all single otherwise unmatched characters */
 
-"START"                       { printf("start\t"); return START; }
-"STOP"                        { printf("stop\t"); return STOP; }
+"START"                       { printf("START\n"); return START; }
+"STOP"                        { printf("STOP\n"); return STOP; }
 
 "WHILE"                       { return STARTWHILE; }
 "DO"                          { return STARTDO; }

@@ -10,8 +10,9 @@ IMPL :: vegetable
     FUNC
         gourd;
         VAR
-            squash : pumpkin
+            squash : pumpkin;
         squah SET 12+12/5*3-1;
+    onion SET 99
 .
 TERMINATE
 
