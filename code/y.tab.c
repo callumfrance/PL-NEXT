@@ -140,7 +140,7 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "pl-next.y"
+#line 2 "pl-next.y"
 
 #include<stdio.h>
 
@@ -394,7 +394,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  5
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   158
+#define YYLAST   159
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  50
@@ -403,7 +403,7 @@ union yyalloc
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  76
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  166
+#define YYNSTATES  167
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -450,7 +450,7 @@ static const yytype_uint8 yytranslate[] =
 #if YYDEBUG
 /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
    YYRHS.  */
-static const yytype_uint8 yyprhs[] =
+static const yytype_uint16 yyprhs[] =
 {
        0,     0,     3,     8,    19,    20,    23,    24,    27,    28,
       30,    31,    33,    36,    40,    43,    47,    53,    57,    60,
@@ -458,8 +458,8 @@ static const yytype_uint8 yyprhs[] =
      100,   103,   104,   107,   110,   112,   114,   120,   123,   127,
      133,   135,   141,   147,   148,   150,   152,   156,   158,   160,
      162,   164,   166,   168,   170,   173,   177,   186,   193,   199,
-     206,   212,   217,   219,   223,   225,   228,   230,   234,   238,
-     240,   244,   248,   249,   251,   253,   255
+     206,   212,   217,   219,   223,   225,   229,   231,   235,   239,
+     241,   245,   249,   250,   252,   254,   256
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
@@ -487,23 +487,23 @@ static const yytype_int8 yyrhs[] =
       89,    14,    -1,    11,    89,    13,    79,    12,    -1,    11,
       89,    13,    78,    79,    12,    -1,    17,    89,    18,    79,
       19,    -1,     9,    78,    79,    10,    -1,    92,    -1,    87,
-      43,    92,    -1,    92,    -1,    88,    40,    -1,    90,    -1,
-      89,     3,    89,    -1,    89,     4,    89,    -1,    91,    -1,
-      90,     5,    90,    -1,    90,     6,    90,    -1,    -1,    93,
-      -1,    92,    -1,     8,    -1,     7,    -1
+      43,    92,    -1,    92,    -1,    88,    40,    92,    -1,    90,
+      -1,    89,     3,    89,    -1,    89,     4,    89,    -1,    91,
+      -1,    90,     5,    90,    -1,    90,     6,    90,    -1,    -1,
+      93,    -1,    92,    -1,     8,    -1,     7,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    27,    27,    32,    36,    37,    41,    42,    46,    47,
-      51,    52,    56,    57,    61,    62,    66,    70,    74,    77,
-      78,    81,    82,    85,    88,    89,    90,    93,    96,    99,
-     102,   106,   107,   108,   109,   110,   113,   116,   119,   120,
-     123,   126,   129,   132,   133,   136,   137,   140,   141,   142,
-     143,   144,   145,   146,   149,   152,   156,   160,   164,   165,
-     169,   173,   177,   178,   181,   182,   185,   186,   187,   191,
-     192,   193,   197,   198,   199,   203,   207
+       0,    28,    28,    33,    37,    38,    42,    43,    47,    48,
+      52,    53,    57,    58,    62,    63,    67,    71,    75,    79,
+      80,    84,    85,    88,    92,    93,    94,    98,   102,   106,
+     110,   115,   116,   117,   118,   119,   123,   126,   130,   131,
+     134,   137,   141,   145,   146,   150,   151,   154,   155,   156,
+     157,   158,   159,   160,   164,   168,   172,   176,   180,   181,
+     185,   189,   193,   194,   197,   198,   201,   202,   203,   207,
+     208,   209,   213,   214,   215,   219,   223
 };
 #endif
 
@@ -568,7 +568,7 @@ static const yytype_uint8 yyr2[] =
        2,     0,     2,     2,     1,     1,     5,     2,     3,     5,
        1,     5,     5,     0,     1,     1,     3,     1,     1,     1,
        1,     1,     1,     1,     2,     3,     8,     6,     5,     6,
-       5,     4,     1,     3,     1,     2,     1,     3,     3,     1,
+       5,     4,     1,     3,     1,     3,     1,     3,     3,     1,
        3,     3,     0,     1,     1,     1,     1
 };
 
@@ -592,8 +592,8 @@ static const yytype_uint8 yydefact[] =
       41,    46,    61,    67,    68,     0,    45,    70,    71,    72,
        0,     0,    39,     0,     0,    62,     0,     0,    16,     0,
       64,    15,     3,     0,    58,     0,     0,    60,     0,     0,
-      23,    29,     0,    65,    17,    59,    57,     0,     0,    63,
-      27,     0,     0,    56,     0,    28
+      23,    29,     0,     0,    17,    59,    57,     0,     0,    63,
+      27,    65,     0,     0,    56,     0,    28
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -626,15 +626,15 @@ static const yytype_int16 yypact[] =
      -44,   -44,   -44,   -44,   -44,    97,   123,   -44,   -44,    57,
       31,   119,   -44,    93,   -39,   -44,    94,   112,   -44,    10,
      -44,   -44,   -44,   130,   -44,    19,   116,   -44,    80,    43,
-     -44,   -44,    80,   -44,   -44,   -44,   -44,    97,    98,   -44,
-     -44,   128,   118,   -44,     1,   -44
+     -44,   -44,    80,    43,   -44,   -44,   -44,    97,    98,   -44,
+     -44,   -44,   128,   118,   -44,     1,   -44
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
      -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,
-      29,   124,   -44,   -15,   -44,   -44,     2,   -44,   -44,    14,
+      29,   126,   -44,   -15,   -44,   -44,     5,   -44,   -44,    14,
      -44,   -44,   127,   -44,   -44,   -44,   -44,   -44,   -43,   -23,
      -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -44,   -33,
      -13,   -44,    -6,   -30
@@ -660,9 +660,9 @@ static const yytype_uint8 yytable[] =
      133,   135,   143,   157,    83,     9,    43,    86,    44,   140,
       45,    88,    46,   101,    47,   105,   115,    48,   137,   118,
      122,   119,   160,    76,     9,    43,   120,    44,   129,    45,
-     138,    46,   142,    47,   161,   144,    48,    93,   147,   148,
-     152,   151,   155,   159,   163,   162,   141,    40,   164,   165,
-     158,    41,     0,     0,     0,     0,     0,     0,   114
+     138,    46,   142,    47,   162,   144,    48,    93,   147,   148,
+     152,   151,   155,   159,   164,   163,   141,   161,   165,    40,
+     166,    41,     0,   158,     0,     0,     0,     0,     0,   114
 };
 
 static const yytype_int16 yycheck[] =
@@ -681,8 +681,8 @@ static const yytype_int16 yycheck[] =
       13,    23,    15,    26,    17,    49,    41,    20,   148,    36,
       10,    40,   152,   129,     8,     9,    40,    11,    11,    13,
       40,    15,    37,    17,   157,    12,    20,    40,    19,    46,
-      28,    47,    12,   149,    16,    47,   117,    23,    30,   164,
-     148,    24,    -1,    -1,    -1,    -1,    -1,    -1,   164
+      28,    47,    12,   149,    16,    47,   117,   153,    30,    23,
+     165,    24,    -1,   148,    -1,    -1,    -1,    -1,    -1,   165
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -705,7 +705,7 @@ static const yytype_uint8 yystos[] =
       89,    79,    92,    92,    87,    92,    66,    93,    40,    88,
       92,    60,    37,    79,    12,    89,    13,    19,    46,    43,
       45,    47,    28,    40,    42,    12,    14,    78,    66,    92,
-      93,    79,    47,    16,    30,    63
+      93,    92,    79,    47,    16,    30,    63
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1520,114 +1520,189 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 28 "pl-next.y"
-    { printf("basic program.\n exiting...\n");
+#line 29 "pl-next.y"
+    { printf("basic program finished.\n\texiting...\n");
                           return(0); }
     break;
 
   case 3:
-#line 33 "pl-next.y"
+#line 34 "pl-next.y"
     { printf("declaration unit, "); }
     break;
 
   case 5:
-#line 38 "pl-next.y"
+#line 39 "pl-next.y"
     { printf("constant declaration part, "); }
     break;
 
   case 7:
-#line 43 "pl-next.y"
+#line 44 "pl-next.y"
     { printf("variable declaration part, "); }
     break;
 
   case 9:
-#line 48 "pl-next.y"
+#line 49 "pl-next.y"
     { printf("type declaration part, "); }
     break;
 
   case 11:
-#line 53 "pl-next.y"
+#line 54 "pl-next.y"
     { printf("procedure interface part, "); }
     break;
 
   case 13:
-#line 58 "pl-next.y"
+#line 59 "pl-next.y"
     { printf("procedure interface, "); }
     break;
 
   case 15:
-#line 63 "pl-next.y"
+#line 64 "pl-next.y"
     { printf("function interface, "); }
     break;
 
   case 16:
-#line 67 "pl-next.y"
+#line 68 "pl-next.y"
     { printf("type declaration, "); }
     break;
 
   case 17:
-#line 71 "pl-next.y"
+#line 72 "pl-next.y"
     { printf("formal parameters, "); }
     break;
 
+  case 18:
+#line 76 "pl-next.y"
+    { printf("Constant declarations, "); }
+    break;
+
+  case 20:
+#line 81 "pl-next.y"
+    { printf("Declarations, "); }
+    break;
+
+  case 23:
+#line 89 "pl-next.y"
+    { printf("Enumerated type, "); }
+    break;
+
+  case 26:
+#line 95 "pl-next.y"
+    { printf("Basic type, "); }
+    break;
+
+  case 27:
+#line 99 "pl-next.y"
+    { printf("Range, "); }
+    break;
+
+  case 28:
+#line 103 "pl-next.y"
+    { printf("Array type, "); }
+    break;
+
+  case 29:
+#line 107 "pl-next.y"
+    { printf("Range type, "); }
+    break;
+
+  case 30:
+#line 111 "pl-next.y"
+    { printf("Block, "); }
+    break;
+
+  case 35:
+#line 120 "pl-next.y"
+    { printf("Specification part, "); }
+    break;
+
+  case 37:
+#line 127 "pl-next.y"
+    { printf("Variable declaration, "); }
+    break;
+
+  case 41:
+#line 138 "pl-next.y"
+    { printf("Function declaration, "); }
+    break;
+
+  case 42:
+#line 142 "pl-next.y"
+    { printf("Procedure declaration, "); }
+    break;
+
+  case 44:
+#line 147 "pl-next.y"
+    { printf("Function interface, "); }
+    break;
+
+  case 53:
+#line 161 "pl-next.y"
+    { printf("Statement, "); }
+    break;
+
+  case 54:
+#line 165 "pl-next.y"
+    { printf("Procedure call, "); }
+    break;
+
   case 55:
-#line 153 "pl-next.y"
-    { printf("assignment(%d set to %d), ", (yyval), (yyvsp[(3) - (3)])); }
+#line 169 "pl-next.y"
+    { printf("assignment(%d is set to %d), ", (yyval), (yyvsp[(3) - (3)])); }
     break;
 
   case 56:
-#line 157 "pl-next.y"
+#line 173 "pl-next.y"
     { printf("for statement, "); }
     break;
 
   case 57:
-#line 161 "pl-next.y"
+#line 177 "pl-next.y"
     { printf("do statement, "); }
     break;
 
   case 59:
-#line 166 "pl-next.y"
+#line 182 "pl-next.y"
     { printf("while statement, "); }
     break;
 
   case 60:
-#line 170 "pl-next.y"
+#line 186 "pl-next.y"
     { printf("if statement, "); }
     break;
 
   case 61:
-#line 174 "pl-next.y"
+#line 190 "pl-next.y"
     { printf("compound statement, "); }
     break;
 
   case 68:
-#line 188 "pl-next.y"
+#line 204 "pl-next.y"
     { printf("expression %d, ", (yyvsp[(1) - (3)])); }
     break;
 
   case 71:
-#line 194 "pl-next.y"
+#line 210 "pl-next.y"
     { printf("term %d, ", (yyvsp[(1) - (3)])); }
     break;
 
   case 74:
-#line 200 "pl-next.y"
+#line 216 "pl-next.y"
     { printf("id_num %d, ", (yyvsp[(1) - (1)])); }
     break;
 
   case 75:
-#line 204 "pl-next.y"
+#line 220 "pl-next.y"
     { printf("ident %d-%d, ", (yyval), (yyvsp[(1) - (1)])); }
     break;
 
   case 76:
-#line 208 "pl-next.y"
+#line 224 "pl-next.y"
     { printf("number %d-%d, ", (yyval), (yyvsp[(1) - (1)])); }
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1631 "y.tab.c"
+#line 1706 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1841,7 +1916,7 @@ yyreturn:
 }
 
 
-#line 212 "pl-next.y"
+#line 228 "pl-next.y"
 
 int main()
 {

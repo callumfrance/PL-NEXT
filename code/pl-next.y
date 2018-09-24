@@ -73,10 +73,12 @@ formal_parameters       : '(' list_ident2 ')'
                         ;
 
 constant_declaration    : declarations ';'
+                        { printf("Constant declarations, "); }
                         ;
 
 declarations            : ident IS number
                         | declarations ',' ident IS number
+                        { printf("Declarations, "); }
                         ;
 
 type                    : basic_type
@@ -84,23 +86,29 @@ type                    : basic_type
                         ;
 
 enumerated_type         : '{' list_ident '}'
+                        { printf("Enumerated type, "); }
                         ;
 
 basic_type              : ident
                         | enumerated_type
                         | range_type
+                        { printf("Basic type, "); }
                         ;
 
 range                   : number TO number
+                        { printf("Range, "); }
                         ;
 
 array_type              : ARRAY ident '[' range ']' OF type
+                        { printf("Array type, "); }
                         ;
 
 range_type              : '[' range ']'
+                        { printf("Range type, "); }
                         ;
 
 block                   : specification_part implementation_part
+                        { printf("Block, "); }
                         ;
 
 
@@ -109,12 +117,14 @@ specification_part      :
                         | VAR variable_declaration
                         | procedure_declaration
                         | function_declaration
+                        { printf("Specification part, "); }
                         ;
 
 implementation_unit     : IMPL IMPLIES ident block '.'
                         ;
 
 variable_declaration    : match_idents ';'
+                        { printf("Variable declaration, "); }
                         ;
 
 match_idents            : ident ':' ident
@@ -125,13 +135,16 @@ implementation_part     : statement
                         ;
 
 function_declaration    : FUNC ident ';' block ';'
+                        { printf("Function declaration, "); }
                         ;
 
 procedure_declaration   : PROC ident ';' block ';'
+                        { printf("Procedure declaration, "); }
                         ;
 
 func_part               :
                         | function_interface
+                        { printf("Function interface, "); }
                         ;
 
 statements              : statement
@@ -145,9 +158,11 @@ statement               : assignment
                         | do_statement
                         | for_statement
                         | compound_statement
+                        { printf("Statement, "); }
                         ;
 
 procedure_call          : EXECUTE ident
+                        { printf("Procedure call, "); }
                         ;
 
 assignment              : ident SET expression
@@ -180,7 +195,7 @@ list_ident              : ident
                         ;
 
 list_ident2             : ident
-                        | list_ident2 ';'
+                        | list_ident2 ';' ident
                         ;
 
 expression              : term

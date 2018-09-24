@@ -332,6 +332,9 @@ void yyfree (void *  );
 
 /* Begin user sect3 */
 
+#define yywrap(n) 1
+#define YY_SKIP_YYWRAP
+
 typedef unsigned char YY_CHAR;
 
 FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
@@ -522,7 +525,7 @@ char *yytext;
 #include<stdlib.h>
 #include "y.tab.h"
 
-#line 526 "lex.yy.c"
+#line 529 "lex.yy.c"
 
 #define INITIAL 0
 #define C_COMMENT 1
@@ -705,9 +708,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 9 "pl-next.l"
+#line 10 "pl-next.l"
 
-#line 711 "lex.yy.c"
+#line 714 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -792,206 +795,206 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 10 "pl-next.l"
+#line 11 "pl-next.l"
 { yylval=atoi(yytext); return NUMBER; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 11 "pl-next.l"
+#line 12 "pl-next.l"
 { return IDENT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 12 "pl-next.l"
+#line 13 "pl-next.l"
 { ; } /* ignore whitespace, like my boy C */
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 14 "pl-next.l"
+#line 15 "pl-next.l"
 { BEGIN(C_COMMENT); } /* add C style comments */
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 15 "pl-next.l"
+#line 16 "pl-next.l"
 { BEGIN(INITIAL); }
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 16 "pl-next.l"
+#line 17 "pl-next.l"
 { }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 17 "pl-next.l"
+#line 18 "pl-next.l"
 { }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 19 "pl-next.l"
+#line 20 "pl-next.l"
 { return (int) yytext[0]; } /* matches all single otherwise unmatched characters */
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 21 "pl-next.l"
+#line 22 "pl-next.l"
 { return START; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 22 "pl-next.l"
+#line 23 "pl-next.l"
 { return STOP; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 24 "pl-next.l"
+#line 25 "pl-next.l"
 { return STARTWHILE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 25 "pl-next.l"
+#line 26 "pl-next.l"
 { return STARTDO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 26 "pl-next.l"
+#line 27 "pl-next.l"
 { return ENDDO; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 27 "pl-next.l"
+#line 28 "pl-next.l"
 { return ENDWHILE; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 28 "pl-next.l"
+#line 29 "pl-next.l"
 { return STARTFOR; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 29 "pl-next.l"
+#line 30 "pl-next.l"
 { return ENDFOR; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 30 "pl-next.l"
+#line 31 "pl-next.l"
 { return STARTIF; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 31 "pl-next.l"
+#line 32 "pl-next.l"
 { return THEN; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 32 "pl-next.l"
+#line 33 "pl-next.l"
 { return ENDIF; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 34 "pl-next.l"
+#line 35 "pl-next.l"
 { return EXECUTE; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 35 "pl-next.l"
+#line 36 "pl-next.l"
 { return SET; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 37 "pl-next.l"
+#line 38 "pl-next.l"
 { return PROC; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 38 "pl-next.l"
+#line 39 "pl-next.l"
 { return FUNC; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 39 "pl-next.l"
+#line 40 "pl-next.l"
 { return IMPL; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 40 "pl-next.l"
+#line 41 "pl-next.l"
 { return IMPLIES; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 41 "pl-next.l"
+#line 42 "pl-next.l"
 { return ISEQ; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 42 "pl-next.l"
+#line 43 "pl-next.l"
 { return DECL; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 44 "pl-next.l"
+#line 45 "pl-next.l"
 { return TO; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 45 "pl-next.l"
+#line 46 "pl-next.l"
 { return ARRAY; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 46 "pl-next.l"
+#line 47 "pl-next.l"
 { return OF; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 47 "pl-next.l"
+#line 48 "pl-next.l"
 { return IS; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 50 "pl-next.l"
+#line 51 "pl-next.l"
 { return TYPEWORD; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 51 "pl-next.l"
+#line 52 "pl-next.l"
 { return TYPEARROW; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 53 "pl-next.l"
+#line 54 "pl-next.l"
 { return CONST; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 54 "pl-next.l"
+#line 55 "pl-next.l"
 { return VAR; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 56 "pl-next.l"
+#line 57 "pl-next.l"
 { return DECLARATION; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 57 "pl-next.l"
+#line 58 "pl-next.l"
 { return END; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 59 "pl-next.l"
+#line 60 "pl-next.l"
 { return PROGRAM; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 60 "pl-next.l"
+#line 61 "pl-next.l"
 { return TERMINATE; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 63 "pl-next.l"
+#line 64 "pl-next.l"
 ECHO;
 	YY_BREAK
-#line 995 "lex.yy.c"
+#line 998 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(C_COMMENT):
 	yyterminate();
@@ -1989,7 +1992,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 63 "pl-next.l"
+#line 64 "pl-next.l"
 
 
 
