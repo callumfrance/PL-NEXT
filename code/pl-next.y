@@ -143,7 +143,7 @@ match_idents            : ident ':' ident
                         ;
 
 implementation_part     : statement
-                        { printf("Implementation Part\n"); }
+                        { printf("Implementation Part, \n"); }
                         ;
 
 function_declaration    : FUNC ident ';' block ';'
@@ -159,20 +159,26 @@ func_part               :
                         { printf("Function interface, "); }
                         ;
 
-statements              :
-                        | statement ';'
+statements              : statement
+                        { printf("One in 'statements'\n"); }
                         | statements ';' statement
-                        { printf("**Statements**, "); }
+                        { printf("**Statements** \n"); }
                         ;
 
 statement               : assignment
+                        { printf("Statement is an assignment, "); }
                         | procedure_call
+                        { printf("Statement is a procedure_call, "); }
                         | if_statement
+                        { printf("Statement is an if_statement, "); }
                         | while_statement
+                        { printf("Statement is a while_statement, "); }
                         | do_statement
+                        { printf("Statement is a do_statement, "); }
                         | for_statement
+                        { printf("Statement is a for_statement, "); }
                         | compound_statement
-                        { printf("Statement, "); }
+                        { printf("Statement is a compound_statement, "); }
                         ;
 
 procedure_call          : EXECUTE ident
@@ -183,16 +189,15 @@ assignment              : ident SET expression
                         { printf("Assignment(%d is set to %d), ", $$, $3); }
                         ;
 
-for_statement           : STARTFOR ident ISEQ expression STARTDO statements statement ENDFOR
+for_statement           : STARTFOR ident ISEQ expression STARTDO statements ENDFOR
                         { printf("For statement, "); }
                         ;
 
-do_statement            : STARTDO statements statement STARTWHILE expression ENDDO
+do_statement            : STARTDO statements STARTWHILE expression ENDDO
                         { printf("Do statement, "); }
                         ;
 
-while_statement         : STARTWHILE expression STARTDO statement ENDWHILE
-                        | STARTWHILE expression STARTDO statements statement ENDWHILE
+while_statement         : STARTWHILE expression STARTDO statements ENDWHILE
                         { printf("While statement, "); }
                         ;
 
@@ -200,7 +205,7 @@ if_statement            : STARTIF expression THEN statement ENDIF
                         { printf("If statement, "); }
                         ;
 
-compound_statement      : START statements statement STOP
+compound_statement      : START statements STOP
                         { printf("Compound statement, "); }
                         ;
 
@@ -213,21 +218,26 @@ list_ident2             : ident
                         ;
 
 expression              : term
+                        { printf("Expression is a term: %d, ", $1); }
                         | expression '+' expression
+                        { printf("Expression is an addition %d, ", $1); }
                         | expression '-' expression
-                        { printf("expression %d, ", $1); }
+                        { printf("Expressions is a subtraction %d, ", $1); }
                         ;
 
 term                    : id_num
+                        { printf("Expression is an id_num: %d, ", $1); }
                         | term '*' term
+                        { printf("Term is a multiplication %d, ", $1); }
                         | term '/' term
-                        { printf("term %d, ", $1); }
+                        { printf("Term is a division %d, ", $1); }
                         ;
 
 id_num                  :
                         | number
+                        { printf("id_num is a number %d, ", $1); }
                         | ident
-                        { printf("id_num %d, ", $1); }
+                        { printf("id_num is an ident %d, ", $1); }
                         ;
 
 ident                   : IDENT

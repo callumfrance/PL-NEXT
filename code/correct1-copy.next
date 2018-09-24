@@ -20,37 +20,18 @@ IMPL :: hector
         VAR
             aias : lesser;
         START
-            asd SET 11;
-            rega SET 12;
-        STOP
+            IF asd THEN
+                asga SET 111
+            FI
+        STOP;
+    START
+        IF asd THEN
+            qsa SET 0
+        FI;
+        WHILE osads+ojn DO
+            po SET 10
+        ELIHW
+    STOP
 .
 TERMINATE
-
-/*
-PROC
-    ident {ajax}
-    ;
-            VAR
-                ident {aias}
-                :
-                ident {lesser}
-                ;
-
-                    IF
-                                ident {aias}
-                    THEN
-                            START
-                                    IF
-                                                ident {menelaus}
-                                    THEN
-                                            ident {gorgo}
-                                            SET
-                                            expression {gorgo + 1}
-                                    FI
-                            STOP
-                    FI
-    ;
-
-
-PROCEDURE DECLARATION > BLOCK > IMPLEMENTATION PART > STATEMENT > IF */
 
