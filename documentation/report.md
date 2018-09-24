@@ -2,16 +2,16 @@ The Creation of PL-NEXT
 ==================================================
 ##### Author: Callum France
 
-Using the provided syntax diagrams, EBNF rules were created. One EBNF rule corresponds to one syntax diagram, making 34 EBNF rules for PL-NEXT. These rules are saved in `ebnf_rules.ebnf`.
+Using the provided syntax diagrams, EBNF rules were created. One EBNF rule corresponds to one syntax diagram, making 33 EBNF rules for PL-NEXT. These rules are saved in `ebnf_rules.ebnf`.
 
 --------------------------------------------------
 
 ### Lex
 
 After the EBNF rules were created, I began to work on the Lex file. Inside the Lex header, I placed the C libraries that were required.
-I then created the two most fundamental types for PL-NEXT - the `number` and `ident`. Because none of the syntax diagrams needed to consider whitespace, at this point I also created a Lex rule to ignore all whitespace.
+I then created the two most fundamental types for PL-NEXT - the `number` and `ident`. Because none of the syntax diagrams needed to consider white space, at this point I also created a Lex rule to ignore all white space.
 
-Despite not being necissitated by the syntax diagrams, I thought that for my own benefit I would add simple comment functionality to my PL-NEXT files. This would give me the option to document my code as I was writing it without needing a separate file (or pen and paper). This was done using a comment 'context' that switched when encountering `/*` and `*/`.
+Despite not being necessitated by the syntax diagrams, I thought that for my own benefit I would add simple comment functionality to my PL-NEXT files. This would give me the option to document my code as I was writing it without needing a separate file (or pen and paper). This was done using a comment 'context' that switched when encountering `/*` and `*/`.
 
 Using the simple regex `.` which picks up the currently parsed symbol, I created a rule that transfers single symbols directly into Yacc. `return (int) yytext[0];` is retrieving the first symbol of `yytext` that is otherwise unmatched to another keyword.
 
