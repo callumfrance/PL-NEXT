@@ -15,7 +15,7 @@ DECL :: telemachus
 DECLARATION END
 
 IMPL :: hector
-    PROC
+    PROCEDUREDECLARATION
         telamon;
         VAR
             aias : lesser;

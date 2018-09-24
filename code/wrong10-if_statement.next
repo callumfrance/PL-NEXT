@@ -20,7 +20,7 @@ IMPL :: hector
         VAR
             aias : lesser;
         START
-            IF briseis THEN
+            IF briseis
                 chryseis SET 111
             FI
         STOP;

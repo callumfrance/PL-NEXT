@@ -7,7 +7,7 @@ DECL :: telemachus
         helen : menelaus,
         gorgo : hector;
     TYPE
-        nestor => [10 TO 20];
+        nestor => ]10 TO 20];
     PROC
         scamander(teucer; glaucia)
     FUNC

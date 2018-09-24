@@ -19,15 +19,17 @@ IMPL :: hector
         telamon;
         VAR
             aias : lesser;
-        START
+        STOP
             IF briseis THEN
-                chryseis SET 111
+                chryseis SET 111111111
             FI
-        STOP;
+        START;
     START
-        DO pandaros SET lykaon WHILE
-            demeter + onchestos
-        OD;
+        DONT
+            pandaros SET lykaon
+            WHILE
+                demeter + onchestos
+        TNOD;
         WHILE osads+ojn DO
             po SET 10
         ELIHW

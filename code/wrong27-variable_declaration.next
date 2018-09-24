@@ -4,8 +4,7 @@ DECL :: telemachus
         menelaus IS 5,
         hector IS 9;
     VAR
-        helen : menelaus,
-        gorgo : hector;
+        helen : menelaus : gorgo : hector,
     TYPE
         nestor => [10 TO 20];
     PROC

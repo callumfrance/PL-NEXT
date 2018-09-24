@@ -1,19 +1,4 @@
 PROGRAM
-DECL :: telemachus
-    CONST
-        menelaus IS 5,
-        hector IS 9;
-    VAR
-        helen : menelaus,
-        gorgo : hector;
-    TYPE
-        nestor => [10 TO 20];
-    PROC
-        scamander(teucer; glaucia)
-    FUNC
-        iris(pothos)
-DECLARATION END
-
 IMPL :: hector
     PROC
         telamon;

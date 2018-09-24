@@ -15,7 +15,7 @@ DECL :: telemachus
 DECLARATION END
 
 IMPL :: hector
-    PROC
+    FOR WHILE IF PROC
         telamon;
         VAR
             aias : lesser;
@@ -24,6 +24,7 @@ IMPL :: hector
                 chryseis SET 111
             FI
         STOP;
+    FI ELIHW ROF
     START
         DO pandaros SET lykaon WHILE
             demeter + onchestos

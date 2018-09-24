@@ -21,11 +21,13 @@ IMPL :: hector
             aias : lesser;
         START
             IF briseis THEN
-                chryseis SET 111
+                chryseis SET thetis//thersites
             FI
         STOP;
     START
-        DO pandaros SET lykaon WHILE
+        DO
+            pandaros SET lykaon
+        WHILE
             demeter + onchestos
         OD;
         WHILE osads+ojn DO

@@ -9,7 +9,7 @@ DECL :: telemachus
     TYPE
         nestor => [10 TO 20];
     PROC
-        scamander(teucer; glaucia)
+        1
     FUNC
         iris(pothos)
 DECLARATION END

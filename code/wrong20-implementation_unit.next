@@ -14,7 +14,7 @@ DECL :: telemachus
         iris(pothos)
 DECLARATION END
 
-IMPL :: hector
+PIMPLE :: hector
     PROC
         telamon;
         VAR

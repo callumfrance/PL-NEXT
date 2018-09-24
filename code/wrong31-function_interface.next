@@ -11,7 +11,7 @@ DECL :: telemachus
     PROC
         scamander(teucer; glaucia)
     FUNC
-        iris(pothos)
+        1
 DECLARATION END
 
 IMPL :: hector

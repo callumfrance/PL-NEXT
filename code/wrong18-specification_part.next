@@ -1,8 +1,7 @@
 PROGRAM
 DECL :: telemachus
-    CONST
-        menelaus IS 5,
-        hector IS 9;
+    menelaus IS 5,
+    hector IS 9;
     VAR
         helen : menelaus,
         gorgo : hector;
