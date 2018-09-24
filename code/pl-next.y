@@ -8,8 +8,8 @@ void yyerror(const char *s);
 
 %start basic_program
 
-%left ADD SUB
-%left MUL DIV
+%left '+' '-'
+%left '*' '/'
 
 %token NUMBER
 %token IDENT
@@ -22,6 +22,7 @@ void yyerror(const char *s);
 %token TYPEWORD TYPEARROW
 %token CONST VAR DECLARATION END
 %token PROGRAM TERMINATE
+
 
 %%
 
@@ -218,23 +219,22 @@ list_ident2             : ident
                         ;
 
 expression              : term
-                        { printf("Expression is a term: %d, ", $1); }
-                        | expression ADD expression
-                        { printf("Expression is an addition %d, ", $1); }
-                        | expression SUB expression
-                        { printf("Expressions is a subtraction %d, ", $1); }
+                        { printf("Expression is a term, "); }
+                        | expression '+' expression
+                        { printf("Expression is an addition, "); }
+                        | expression '-' expression
+                        { printf("Expressions is a subtraction, "); }
                         ;
 
 term                    : id_num
-                        { printf("Expression is an id_num: %d, ", $1); }
-                        | term MUL term
-                        { printf("Term is a multiplication %d, ", $1); }
-                        | term DIV term
-                        { printf("Term is a division %d, ", $1); }
+                        { printf("Expression is an id_num, "); }
+                        | term '*' term
+                        { printf("Term is a multiplication, "); }
+                        | term '/' term
+                        { printf("Term is a division, "); }
                         ;
 
-id_num                  :
-                        | number
+id_num                  : number
                         { printf("id_num is a number %d, ", $1); }
                         | ident
                         { printf("id_num is an ident %d, ", $1); }

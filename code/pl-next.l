@@ -17,12 +17,8 @@ IDENT                      [a-z]+
 <C_COMMENT>\n                 { }
 <C_COMMENT>.                  { }
 
-.                             { return (int) yytext[0]; } /* matches all single otherwise unmatched characters */
+.                             { return (int) yytext[0]; }
 
-'*'                           { return MUL; }
-'/'                           { return DIV; }
-'+'                           { return ADD; }
-'-'                           { return SUB; }
 
 "START"                       { printf("START\n"); return START; }
 "STOP"                        { printf("STOP\n"); return STOP; }
