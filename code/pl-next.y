@@ -8,8 +8,8 @@ void yyerror(const char *s);
 
 %start basic_program
 
-%left '+' '-'
-%left '*' '/'
+%left ADD SUB
+%left MUL DIV
 
 %token NUMBER
 %token IDENT
@@ -219,17 +219,17 @@ list_ident2             : ident
 
 expression              : term
                         { printf("Expression is a term: %d, ", $1); }
-                        | expression '+' expression
+                        | expression ADD expression
                         { printf("Expression is an addition %d, ", $1); }
-                        | expression '-' expression
+                        | expression SUB expression
                         { printf("Expressions is a subtraction %d, ", $1); }
                         ;
 
 term                    : id_num
                         { printf("Expression is an id_num: %d, ", $1); }
-                        | term '*' term
+                        | term MUL term
                         { printf("Term is a multiplication %d, ", $1); }
-                        | term '/' term
+                        | term DIV term
                         { printf("Term is a division %d, ", $1); }
                         ;
 

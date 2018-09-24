@@ -19,6 +19,11 @@ IDENT                      [a-z]+
 
 .                             { return (int) yytext[0]; } /* matches all single otherwise unmatched characters */
 
+'*'                           { return MUL; }
+'/'                           { return DIV; }
+'+'                           { return ADD; }
+'-'                           { return SUB; }
+
 "START"                       { printf("START\n"); return START; }
 "STOP"                        { printf("STOP\n"); return STOP; }
 
